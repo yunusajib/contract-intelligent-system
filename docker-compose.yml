@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # Main application service
+  contract-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: contract-intelligence-api
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ENVIRONMENT=production
+      - LOG_LEVEL=INFO
+      - DEFAULT_MODEL=gpt-4-turbo-preview
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+    volumes:
+      # Mount for development (optional - comment out for production)
+      # - ./api:/app/api
+      # - ./agents:/app/agents
+      # - ./core:/app/core
+      - contract-data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - contract-network
+  # PostgreSQL database (optional - for future state persistence)
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: contract-db
+  #   environment:
+  #     - POSTGRES_DB=contracts
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - contract-network
+  #   restart: unless-stopped
+
+  # Redis cache (optional - for future caching)
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: contract-cache
+  #   ports:
+  #     - "6379:6379"
+  #   networks:
+  #     - contract-network
+  #   restart: unless-stopped
+
+volumes:
+  contract-data:
+    # postgres-data:
+
+networks:
+  contract-network:
+    driver: bridge
