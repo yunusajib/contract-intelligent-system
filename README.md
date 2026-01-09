@@ -980,7 +980,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Real-World Problem:** Solves actual business pain points worth 40+ hours/week  
 **Production Deployment:** Not just a tutorial - actually deployed and running 24/7  
-**Live Demo:** Recruiters can test it immediately at http://98.92.51.141:8000  
+**Live Demo:** Anyone can tests it immediately at http://98.92.51.141:8000  
 **Modern Stack:** Uses cutting-edge AI frameworks (Crew.AI, GPT-4)  
 **Professional Architecture:** Clean code, proper patterns, comprehensive docs  
 **Scalable Design:** Ready for growth with minimal changes  
