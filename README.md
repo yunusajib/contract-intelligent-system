@@ -10,7 +10,7 @@ AI-Powered Multi-Agent Contract Analysis & Risk Assessment Platform
 
 ---
 
-> 🎯 **HIRING MANAGERS:** Skip the docs. [**Try the live demo**](http://98.92.51.141:8000) in 60 seconds.  
+> 🎯 [**Try the live demo**](http://98.92.51.141:8000) in 60 seconds.  
 > Upload any contract (NDA, service agreement, lease) and get instant AI analysis.  
 > Then come back to see how it's built.
 
